@@ -9,4 +9,10 @@ const AttendanceSchema = z.object({
   observations: z.string().optional(),
 });
 
-export { AttendanceSchema };
+const AttendanceCreateSchema = AttendanceSchema.omit({
+  id: true,
+});
+
+const AttendanceUpdateSchema = AttendanceCreateSchema.partial();
+
+export { AttendanceSchema, AttendanceCreateSchema, AttendanceUpdateSchema };

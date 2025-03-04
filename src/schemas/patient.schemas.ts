@@ -31,4 +31,14 @@ const PatientSchema = z.object({
   ),
 });
 
-export { PatientSchema };
+const PatientCreateSchema = PatientSchema.omit({
+  id: true,
+  appointments: true,
+  attendances: true,
+});
+
+const PatientUpdateSchema = PatientCreateSchema.partial();
+
+
+
+export { PatientSchema, PatientCreateSchema, PatientUpdateSchema };

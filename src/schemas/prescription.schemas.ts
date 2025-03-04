@@ -8,4 +8,14 @@ const PrescriptionSchema = z.object({
   instructions: z.string().optional(),
 });
 
-export { PrescriptionSchema };
+const PrescriptionCreateSchema = PrescriptionSchema.omit({
+  id: true,
+});
+
+const PrescriptionUpdateSchema = PrescriptionCreateSchema.partial();
+
+export {
+  PrescriptionSchema,
+  PrescriptionCreateSchema,
+  PrescriptionUpdateSchema,
+};

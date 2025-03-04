@@ -18,4 +18,11 @@ const AppointmentSchema = z.object({
   ),
 });
 
-export { AppointmentSchema };
+const AppointmentCreateSchema = AppointmentSchema.omit({
+  id: true,
+  prescriptions: true,
+});
+
+const AppointmentUpdateSchema = AppointmentCreateSchema.partial();
+
+export { AppointmentSchema, AppointmentCreateSchema, AppointmentUpdateSchema };

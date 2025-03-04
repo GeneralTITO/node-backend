@@ -29,4 +29,12 @@ const EmployeeSchema = z.object({
   ),
 });
 
-export { EmployeeSchema };
+const EmployeeCreateSchema = EmployeeSchema.omit({
+  id: true,
+  appointments: true,
+  attendances: true,
+});
+
+const EmployeeUpdateSchema = EmployeeCreateSchema.partial();
+
+export { EmployeeSchema, EmployeeCreateSchema, EmployeeUpdateSchema };
