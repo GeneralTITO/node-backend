@@ -4,7 +4,7 @@ const AppointmentSchema = z.object({
   id: z.number().int().positive(),
   patientId: z.number().int().positive(),
   employeeId: z.number().int().positive(),
-  appointmentDate: z.date(),
+  appointmentDate: z.date().or(z.string()),
   diagnosis: z.string().optional(),
   notes: z.string().optional(),
   prescriptions: z.array(
@@ -17,12 +17,19 @@ const AppointmentSchema = z.object({
     })
   ),
 });
-
+const AppointmentReturnSchema = AppointmentSchema.nullable();
 const AppointmentCreateSchema = AppointmentSchema.omit({
   id: true,
   prescriptions: true,
+  patientId:true,
+  employeeId: true
 });
 
 const AppointmentUpdateSchema = AppointmentCreateSchema.partial();
 
-export { AppointmentSchema, AppointmentCreateSchema, AppointmentUpdateSchema };
+export {
+  AppointmentSchema,
+  AppointmentCreateSchema,
+  AppointmentUpdateSchema,
+  AppointmentReturnSchema,
+};
