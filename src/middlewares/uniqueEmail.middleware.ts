@@ -1,9 +1,7 @@
 import { NextFunction, Request, Response } from "express";
-import { PrismaClient } from "@prisma/client"; // Importando o PrismaClient
 import { AppError } from "../errors";
+import { prisma } from "../prismaClient";
 
-// Instanciando o PrismaClient
-const prisma = new PrismaClient();
 
 export const uniqueEmail = async (
   req: Request,

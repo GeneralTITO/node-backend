@@ -11,6 +11,7 @@ export const verifyToken = (
   if (!authorization) throw new AppError("Missing bearer token", 401);
 
   const [_bearer, token]: Array<string> = authorization.split(" ");
+  if (!token) throw new AppError("Invalid token format", 401);
 
   res.locals = {
     ...res.locals,
