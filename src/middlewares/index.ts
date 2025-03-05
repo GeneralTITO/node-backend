@@ -6,7 +6,7 @@ import { uniqueEmail } from "./uniqueEmail.middleware";
 import { validateBody } from "./validateBody.middleware";
 import { verifyToken } from "./verifyToken.middleware";
 
-export default {
+export default{
   handleError,
   idExists,
   isAdmin,
