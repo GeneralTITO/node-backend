@@ -9,9 +9,9 @@ const UserSchema = z.object({
   dateOfBirth: z.date(),
   gender: z.string().min(1),
   role: RoleSchema,
-  phone: z.string().optional(),
-  email: z.string().email().optional(),
-  address: z.string().optional(),
+  phone: z.string().nullable().optional(), 
+  email: z.string().email().nullable().optional(), 
+  address: z.string().nullable().optional(), 
   appointmentsPatient: z.array(
     z.object({
       id: z.number().int().positive(),
@@ -51,7 +51,12 @@ const UserSchema = z.object({
     })
   ).optional(),
 });
-
+const UserReturnSchema = UserSchema.omit({
+    appointmentsPatient: true,
+    appointmentsEmployee: true,
+    attendancesPatient: true,
+    attendancesEmployee: true,
+  });
 const UserCreateSchema = UserSchema.omit({
   id: true,
   appointmentsPatient: true,
@@ -62,4 +67,4 @@ const UserCreateSchema = UserSchema.omit({
 
 const UserUpdateSchema = UserCreateSchema.partial();
 
-export { UserSchema, UserCreateSchema, UserUpdateSchema };
+export { UserSchema, UserCreateSchema, UserUpdateSchema ,UserReturnSchema};

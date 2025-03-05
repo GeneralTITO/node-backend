@@ -1,34 +1,35 @@
 import {
-  AppointmentCreateSchema,
-  AppointmentSchema,
-  AppointmentUpdateSchema,
-} from "../schemas";
+  Appointment,
+  AppointmentCreate,
+  AppointmentUpdate,
+} from "./appointment.interfaces";
 import {
-  AttendanceCreateSchema,
-  AttendanceSchema,
-  AttendanceUpdateSchema,
-} from "../schemas";
-import {
-  PrescriptionCreateSchema,
-  PrescriptionSchema,
-  PrescriptionUpdateSchema,
-} from "../schemas";
-import { UserCreateSchema, UserSchema, UserUpdateSchema } from "../schemas";
+  Attendance,
+  AttendanceCreate,
+  AttendanceUpdate,
+} from "./attendance.interfaces";
 
-import { UrgencyLevelSchema } from "../schemas";
+import {
+  Prescription,
+  PrescriptionCreate,
+  PrescriptionUpdate,
+} from "./prescription.interfaces";
+import { UrgengyLevel } from "./urgencyLevel.interfaces";
+import { User, UserCreate, UserUpdate, UserReturn } from "./user.interfaces";
 
 export {
-  AppointmentCreateSchema,
-  AppointmentSchema,
-  AppointmentUpdateSchema,
-  AttendanceCreateSchema,
-  AttendanceSchema,
-  AttendanceUpdateSchema,
-  UserCreateSchema,
-  UserSchema,
-  UserUpdateSchema,
-  PrescriptionCreateSchema,
-  PrescriptionSchema,
-  PrescriptionUpdateSchema,
-  UrgencyLevelSchema,
+  Appointment,
+  AppointmentCreate,
+  AppointmentUpdate,
+  Attendance,
+  AttendanceCreate,
+  AttendanceUpdate,
+  Prescription,
+  PrescriptionCreate,
+  PrescriptionUpdate,
+  UrgengyLevel,
+  User,
+  UserCreate,
+  UserReturn,
+  UserUpdate,
 };
