@@ -2,6 +2,7 @@ import {
   Appointment,
   AppointmentCreate,
   AppointmentUpdate,
+  AppointmentReturn,
 } from "./appointment.interfaces";
 import {
   Attendance,
@@ -26,6 +27,7 @@ export {
   AttendanceUpdate,
   Prescription,
   PrescriptionCreate,
+  AppointmentReturn,
   PrescriptionUpdate,
   UrgengyLevel,
   User,

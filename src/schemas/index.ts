@@ -2,6 +2,7 @@ import {
   AppointmentSchema,
   AppointmentCreateSchema,
   AppointmentUpdateSchema,
+  AppointmentReturnSchema,
 } from "./appointment.schemas";
 import {
   AttendanceSchema,
@@ -31,4 +32,5 @@ export {
   UserCreateSchema,
   UserSchema,
   UserUpdateSchema,
+  AppointmentReturnSchema,
 };

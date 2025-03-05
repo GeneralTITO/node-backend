@@ -11,6 +11,8 @@ const AttendanceSchema = z.object({
 
 const AttendanceCreateSchema = AttendanceSchema.omit({
   id: true,
+  patientId:true,
+  employeeId: true
 });
 
 const AttendanceUpdateSchema = AttendanceCreateSchema.partial();

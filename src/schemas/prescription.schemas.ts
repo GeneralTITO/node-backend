@@ -10,6 +10,7 @@ const PrescriptionSchema = z.object({
 
 const PrescriptionCreateSchema = PrescriptionSchema.omit({
   id: true,
+  appointmentId: true,
 });
 
 const PrescriptionUpdateSchema = PrescriptionCreateSchema.partial();
