@@ -1,24 +1,51 @@
-// prescriptionService.ts
-
 import { Prescriptions } from "@prisma/client";
 import { prisma } from "../prismaClient";
 import { PrescriptionCreate } from "../interfaces";
+import { AppError } from "../errors";
 
-const create = async (payload: PrescriptionCreate): Promise<Prescriptions> => {
+const create = async (
+  payload: PrescriptionCreate,
+  idAppointment: string
+): Promise<Prescriptions> => {
+  const appointmentId = Number(idAppointment);
+
+  // Add await here - missing in original code
+  const appointmentExists = await prisma.appointments.findUnique({
+    where: { id: appointmentId },
+  });
+
+  if (!appointmentExists) {
+    throw new AppError("Appointment not found", 404);
+  }
+
+  const prescriptionData = {
+    appointmentId: appointmentId,
+    medicationName: payload.medicationName,
+    dosage: payload.dosage,
+    instructions: payload.instructions || null,
+  };
+
   const prescription = await prisma.prescriptions.create({
-    data: payload,
+    data: prescriptionData,
   });
 
   return prescription;
 };
 
-const read = async (): Promise<Prescriptions[]> => {
-  return await prisma.prescriptions.findMany();
-};
+const read = async (idAppointment: string): Promise<Prescriptions[]> => {
+  const appointmentId = Number(idAppointment);
 
-const findByAppointmentId = async (appointmentId: number): Promise<Prescriptions[]> => {
+  const appointmentExists = prisma.appointments.findUnique({
+    where: { id: appointmentId },
+  });
+  if (!appointmentExists) {
+    throw new AppError("Appoitment not found", 404);
+  }
+
   return await prisma.prescriptions.findMany({
-    where: { appointmentId },
+    where: {
+      appointmentId: appointmentId,
+    },
   });
 };
 
@@ -28,4 +55,4 @@ const destroy = async (prescriptionId: number): Promise<void> => {
   });
 };
 
-export default { create, read, findByAppointmentId, destroy };
+export default { create, read, destroy };

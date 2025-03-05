@@ -1,5 +1,5 @@
 import { NextFunction, Request, Response } from "express";
-import { prisma } from "../prismaClient"; // Certifique-se de importar corretamente o PrismaClient
+import { prisma } from "../prismaClient";
 import { AppError } from "../errors";
 
 export const appointmentIdExists = async (

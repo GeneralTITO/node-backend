@@ -1,0 +1,24 @@
+import { Request, Response } from "express";
+import { presciptionServices } from "../services";
+
+const create = async (req: Request, res: Response): Promise<void> => {
+  const appointmentID = req.params.idAppointment;
+  const prescription = await presciptionServices.create(
+    req.body,
+    appointmentID
+  );
+  res.status(201).json(prescription);
+};
+
+const read = async (req: Request, res: Response): Promise<void> => {
+  const appointmentID: string = req.params.idAppointment;
+  const prescriptions = await presciptionServices.read(appointmentID);
+  res.status(200).json(prescriptions);
+};
+
+const destroy = async (req: Request, res: Response): Promise<void> => {
+  await presciptionServices.destroy(res.locals.foundEntity.id);
+  res.status(204).send();
+};
+
+export default { create, read, destroy };

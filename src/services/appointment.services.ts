@@ -8,7 +8,7 @@ const create = async (
     idStaff: string,
     idUser: string
   ): Promise<Appointments> => {
-    // Validation for required IDs
+    
     if (!idStaff || !idUser) {
       throw new AppError(
         "Both patient and employee must be provided with valid IDs",
