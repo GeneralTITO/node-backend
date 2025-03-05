@@ -1,8 +1,20 @@
-import { AppointmentCreateSchema, AppointmentSchema, AppointmentUpdateSchema } from "../schemas";
-import { AttendanceCreateSchema, AttendanceSchema, AttendanceUpdateSchema } from "../schemas";
-import { EmployeeCreateSchema, EmployeeSchema, EmployeeUpdateSchema } from "../schemas";
-import { PatientCreateSchema, PatientSchema, PatientUpdateSchema } from "../schemas";
-import { PrescriptionCreateSchema, PrescriptionSchema, PrescriptionUpdateSchema } from "../schemas";
+import {
+  AppointmentCreateSchema,
+  AppointmentSchema,
+  AppointmentUpdateSchema,
+} from "../schemas";
+import {
+  AttendanceCreateSchema,
+  AttendanceSchema,
+  AttendanceUpdateSchema,
+} from "../schemas";
+import {
+  PrescriptionCreateSchema,
+  PrescriptionSchema,
+  PrescriptionUpdateSchema,
+} from "../schemas";
+import { UserCreateSchema, UserSchema, UserUpdateSchema } from "../schemas";
+
 import { UrgencyLevelSchema } from "../schemas";
 
 export {
@@ -12,12 +24,9 @@ export {
   AttendanceCreateSchema,
   AttendanceSchema,
   AttendanceUpdateSchema,
-  EmployeeCreateSchema,
-  EmployeeSchema,
-  EmployeeUpdateSchema,
-  PatientCreateSchema,
-  PatientSchema,
-  PatientUpdateSchema,
+  UserCreateSchema,
+  UserSchema,
+  UserUpdateSchema,
   PrescriptionCreateSchema,
   PrescriptionSchema,
   PrescriptionUpdateSchema,

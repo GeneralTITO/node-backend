@@ -4,7 +4,7 @@ import {
 } from "../schemas";
 import { Prisma } from "@prisma/client";
 type Appointment = z.infer<typeof AppointmentSchema>;
-type AppointmentCreate = Prisma.AppointmentCreateInput;
-type AppointmentUpdate = Prisma.AppointmentUpdateInput;
+type AppointmentCreate = Prisma.AppointmentsCreateInput;
+type AppointmentUpdate = Prisma.AppointmentsUpdateInput;
 
 export { Appointment, AppointmentCreate, AppointmentUpdate };

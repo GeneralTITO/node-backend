@@ -4,7 +4,7 @@ import {
 } from "../schemas";
 import { Prisma } from "@prisma/client";
 type Prescription = z.infer<typeof PrescriptionSchema>;
-type PrescriptionCreate = Prisma.PrescriptionCreateInput;
-type PrescriptionUpdate = Prisma.PrescriptionUpdateInput;
+type PrescriptionCreate = Prisma.PrescriptionsCreateInput;
+type PrescriptionUpdate = Prisma.PrescriptionsUpdateInput;
 
 export { Prescription, PrescriptionCreate, PrescriptionUpdate };

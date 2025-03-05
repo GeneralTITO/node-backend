@@ -4,7 +4,7 @@ import {
 } from "../schemas";
 import { Prisma } from "@prisma/client";
 type Attendance = z.infer<typeof AttendanceSchema>;
-type AttendanceCreate = Prisma.AttendanceCreateInput;
-type AttendanceUpdate = Prisma.AttendanceUpdateInput;
+type AttendanceCreate = Prisma.AttendancesCreateInput;
+type AttendanceUpdate = Prisma.AttendancesUpdateInput;
 
 export { Attendance, AttendanceCreate, AttendanceUpdate };
