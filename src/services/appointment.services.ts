@@ -64,23 +64,10 @@ const readOne = async (appointmentId: number): Promise<any> => {
   return appointment;
 };
 
-const findById = async (
-  appointmentId: number
-): Promise<Appointments | null> => {
-  return await prisma.appointments.findUnique({
-    where: { id: appointmentId },
-    include: {
-      patient: true,
-      employee: true,
-      prescriptions: true,
-    },
-  });
-};
-
 const destroy = async (appointmentId: number): Promise<void> => {
   await prisma.appointments.delete({
     where: { id: appointmentId },
   });
 };
 
-export default { create, read, findById, destroy, readOne };
+export default { create, read, destroy, readOne };

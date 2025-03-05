@@ -1,4 +1,5 @@
 import { appointmentIdExists } from "./appointmentIdExists";
+import { attendanceIdExists } from "./attendanceIdExists";
 import { handleError } from "./handleError.middleware";
 import { idExists } from "./idExists.middleware";
 import { isAdmin } from "./isAdmin.middleware";
@@ -15,5 +16,6 @@ export default {
   uniqueEmail,
   validateBody,
   appointmentIdExists,
-  verifyToken,
+  attendanceIdExists,
+  verifyToken
 };

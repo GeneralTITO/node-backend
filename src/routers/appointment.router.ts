@@ -1,7 +1,7 @@
 import { Router } from "express";
 import middlewares from "../middlewares";
 import { AppointmentCreateSchema } from "../schemas";
-import appointmentControllers from "../controllers/appointment.controllers";
+import { appointmentControllers } from "../controllers";
 
 
 export const appointmentRouter: Router = Router();
