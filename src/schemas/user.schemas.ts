@@ -6,7 +6,7 @@ const UserSchema = z.object({
   id: z.number().int().positive(),
   firstName: z.string().min(1),
   lastName: z.string().min(1),
-  dateOfBirth: z.date(),
+  dateOfBirth: z.date().or(z.string()),
   gender: z.string().min(1),
   role: RoleSchema,
   phone: z.string().nullable().optional(), 
@@ -56,7 +56,7 @@ const UserReturnSchema = UserSchema.omit({
     appointmentsEmployee: true,
     attendancesPatient: true,
     attendancesEmployee: true,
-  });
+  }).nullable();
 const UserCreateSchema = UserSchema.omit({
   id: true,
   appointmentsPatient: true,
