@@ -1,5 +1,5 @@
 import { z } from "zod";
-import { UrgencyLevelSchema } from "./UrgencyLevel.schemas";
+import { UrgencyLevelSchema } from "./urgencyLevel.schemas";
 
 const PatientSchema = z.object({
   id: z.number().int().positive(),

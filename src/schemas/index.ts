@@ -3,7 +3,7 @@ import { AttendanceSchema, AttendanceCreateSchema, AttendanceUpdateSchema } from
 import { EmployeeSchema, EmployeeCreateSchema, EmployeeUpdateSchema } from "./employee.schemas";
 import { PatientSchema, PatientCreateSchema, PatientUpdateSchema } from "./patient.schemas";
 import { PrescriptionSchema, PrescriptionCreateSchema, PrescriptionUpdateSchema } from "./prescription.schemas";
-import { UrgencyLevelSchema } from "./UrgencyLevel.schemas";
+import { UrgencyLevelSchema } from "./urgencyLevel.schemas";
 
 export {
   AppointmentSchema,
