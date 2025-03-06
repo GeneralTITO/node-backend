@@ -1,0 +1,21 @@
+1- add auth
+2- add search for user names
+3- add search for Prescriptions and Appointments for user id
+
+
+4- add regis
+5- prometheus
+6- kafta/mqhabbit
+7- kubbernets/docker
+
+
+
+8- nest.js
+9- react + redux
+10- next.js
+11- .net
+12- java
+13- go
+14- ruby 
+15- vue
+16- angular

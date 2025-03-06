@@ -8,7 +8,7 @@ const create = async (
     idStaff: string,
     idUser: string
   ): Promise<Appointments> => {
-    
+
     if (!idStaff || !idUser) {
       throw new AppError(
         "Both patient and employee must be provided with valid IDs",
@@ -16,11 +16,9 @@ const create = async (
       );
     }
   
-    // Convert string IDs to numbers
     const numberIdStaff = Number(idStaff);
     const numberIdUser = Number(idUser);
   
-    // Check if employee exists
     const employeeExists = await prisma.user.findUnique({
       where: { id: numberIdStaff },
     });
@@ -28,7 +26,6 @@ const create = async (
       throw new AppError("Employee not found", 404);
     }
   
-    // Check if patient exists
     const patientExists = await prisma.user.findUnique({
       where: { id: numberIdUser },
     });
