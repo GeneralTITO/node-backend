@@ -9,7 +9,6 @@ const create = async (
 ): Promise<Prescriptions> => {
   const appointmentId = Number(idAppointment);
 
-  // Add await here - missing in original code
   const appointmentExists = await prisma.appointments.findUnique({
     where: { id: appointmentId },
   });
