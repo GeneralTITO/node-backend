@@ -12,7 +12,7 @@ const UserSchema = z.object({
   password: z.string(),
   resetToken: z.string().nullable().optional(),
   phone: z.string().nullable().optional(),
-  email: z.string().email().nullable().optional(),
+  email: z.string().email(),
   address: z.string().nullable().optional(),
   appointmentsPatient: z
     .array(

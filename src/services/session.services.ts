@@ -13,7 +13,7 @@ const create = async ({
     throw new AppError("Email and password are required", 400);
   }
 
-  const foundUser: User | null = await prisma.user.findUnique({
+  const foundUser: any = await prisma.user.findUnique({
     where: { email: email },
   });
 
@@ -34,13 +34,15 @@ const create = async ({
       500
     );
   }
-  const userid: any = foundUser.id;
+
+  const userid = foundUser.id;
+  const role = foundUser.role.toString();
   const expiresIn: any = process.env.EXPIRES_IN || "1d";
-  const jwtOptions: jwt.SignOptions = { subject: userid, expiresIn: expiresIn };
+  const jwtOptions: any = { subject: userid.toString(), expiresIn: expiresIn };
 
-  const token = jwt.sign({ id: userid }, secretKey, jwtOptions);
+  const token = jwt.sign({ id: userid, role: role }, secretKey, jwtOptions);
 
-  return { token };
+  return { token:token, role:role, idUser: userid };
 };
 
 export default { create };

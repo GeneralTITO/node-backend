@@ -22,7 +22,7 @@ model User {
   gender        String
   role          Role
   phone         String?
-  email         String?      @unique 
+  email         String      @unique 
   address       String?
   password      String
   resetToken    String?
