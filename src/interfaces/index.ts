@@ -16,7 +16,15 @@ import {
   PrescriptionUpdate,
 } from "./prescription.interfaces";
 import { UrgengyLevel } from "./urgencyLevel.interfaces";
-import { User, UserCreate, UserUpdate, UserReturn } from "./user.interfaces";
+import {
+  User,
+  UserCreate,
+  UserUpdate,
+  UserReturn,
+  ArrayUserReturn,
+} from "./user.interfaces";
+
+import { SessionCreate, SessionReturn } from "./session.interfaces";
 
 export {
   Appointment,
@@ -34,4 +42,7 @@ export {
   UserCreate,
   UserReturn,
   UserUpdate,
+  SessionCreate,
+  SessionReturn,
+  ArrayUserReturn,
 };
