@@ -3,9 +3,11 @@ import { presciptionServices } from "../services";
 
 const create = async (req: Request, res: Response): Promise<void> => {
   const appointmentID = req.params.idAppointment;
+  const role: string = res.locals.decoded.role;
   const prescription = await presciptionServices.create(
     req.body,
-    appointmentID
+    appointmentID,
+    role
   );
   res.status(201).json(prescription);
 };

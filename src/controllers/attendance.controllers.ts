@@ -4,10 +4,13 @@ import attendanceServices from "../services/attendance.services";
 const create = async (req: Request, res: Response): Promise<void> => {
   const idUser: string = req.params.idUser;
   const idStaff: string = req.params.idStaff;
+  const role: string = res.locals.decoded.role;
+
   const attendance = await attendanceServices.create(
     req.body,
     idStaff,
-    idUser
+    idUser,
+    role
   );
   res.status(201).json(attendance);
 };

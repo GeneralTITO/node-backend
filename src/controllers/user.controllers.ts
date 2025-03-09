@@ -1,10 +1,8 @@
 import { Request, Response } from "express";
 import userServices from "../services/user.services";
-import { User } from "../interfaces";
-import { number } from "zod";
 
 const create = async (req: Request, res: Response): Promise<void> => {
-  const user: User = await userServices.create(req.body);
+  const user= await userServices.create(req.body);
   res.status(201).json(user);
 };
 
