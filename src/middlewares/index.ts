@@ -2,6 +2,7 @@ import { appointmentIdExists } from "./appointmentIdExists";
 import { attendanceIdExists } from "./attendanceIdExists";
 import { handleError } from "./handleError.middleware";
 import { idExists } from "./idExists.middleware";
+import { isOwner } from "./isOwner.middleware";
 import { isStaffOrDoctor } from "./isStaffOrDoctormiddleware";
 import { presciptionIdExists } from "./presciptionIdExists";
 import { uniqueEmail } from "./uniqueEmail.middleware";
@@ -18,4 +19,5 @@ export default {
   attendanceIdExists,
   verifyToken,
   presciptionIdExists,
+  isOwner,
 };

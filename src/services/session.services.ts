@@ -18,13 +18,15 @@ const create = async ({
   });
 
   if (!foundUser) {
-    throw new AppError("Invalid credentials", 401);
+    throw new AppError("Invalid credentials email", 401);
   }
 
+  console.log(password)
+  console.log(foundUser.password)
   const samePwd: boolean = await compare(password, foundUser.password);
 
   if (!samePwd) {
-    throw new AppError("Invalid credentials", 401);
+    throw new AppError("Invalid credentials password", 401);
   }
 
   const secretKey = process.env.SECRET_KEY as jwt.Secret | jwt.PrivateKey;
