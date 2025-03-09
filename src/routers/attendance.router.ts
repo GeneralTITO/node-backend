@@ -6,7 +6,7 @@ import { AttendanceCreateSchema } from "../schemas";
 
 export const attendanceRouter: Router = Router();
 
-attendanceRouter.get("", attendanceControllers.read);
-attendanceRouter.get("/:id", middlewares.attendanceIdExists, attendanceControllers.readOne);
-attendanceRouter.delete("/:id", middlewares.attendanceIdExists, attendanceControllers.destroy);
-attendanceRouter.post("/:idStaff/:idUser", middlewares.validateBody(AttendanceCreateSchema), attendanceControllers.create);
+attendanceRouter.get("", middlewares.verifyToken,attendanceControllers.read);
+attendanceRouter.get("/:id", middlewares.verifyToken,middlewares.attendanceIdExists, attendanceControllers.readOne);
+attendanceRouter.delete("/:id", middlewares.verifyToken,middlewares.attendanceIdExists, attendanceControllers.destroy);
+attendanceRouter.post("/:idStaff/:idUser",middlewares.verifyToken ,middlewares.validateBody(AttendanceCreateSchema), attendanceControllers.create);

@@ -14,9 +14,16 @@ import {
   PrescriptionCreateSchema,
   PrescriptionUpdateSchema,
 } from "./prescription.schemas";
-import { UserSchema, UserCreateSchema, UserUpdateSchema } from "./user.schemas";
+import {
+  UserSchema,
+  UserCreateSchema,
+  UserUpdateSchema,
+  ArrayUserReturnSchema,
+  UserReturnSchema,
+} from "./user.schemas";
 
 import { UrgencyLevelSchema } from "./urgencyLevel.schemas";
+import { sessionSchema } from "./session.schema";
 
 export {
   AppointmentSchema,
@@ -33,4 +40,7 @@ export {
   UserSchema,
   UserUpdateSchema,
   AppointmentReturnSchema,
+  sessionSchema,
+  ArrayUserReturnSchema,
+  UserReturnSchema,
 };

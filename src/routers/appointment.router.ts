@@ -6,7 +6,7 @@ import { appointmentControllers } from "../controllers";
 
 export const appointmentRouter: Router = Router();
 
-appointmentRouter.get("", appointmentControllers.read);
-appointmentRouter.get("/:id", middlewares.appointmentIdExists, appointmentControllers.readOne);
-appointmentRouter.delete("/:id", middlewares.appointmentIdExists, appointmentControllers.destroy);
-appointmentRouter.post("/:idStaff/:idUser", middlewares.validateBody(AppointmentCreateSchema), appointmentControllers.create);
+appointmentRouter.get("", middlewares.verifyToken,appointmentControllers.read);
+appointmentRouter.get("/:id", middlewares.verifyToken,middlewares.isStaffOrDoctor,middlewares.appointmentIdExists, appointmentControllers.readOne);
+appointmentRouter.delete("/:id", middlewares.verifyToken,middlewares.appointmentIdExists, appointmentControllers.destroy);
+appointmentRouter.post("/:idStaff/:idUser", middlewares.verifyToken,middlewares.validateBody(AppointmentCreateSchema), appointmentControllers.create);

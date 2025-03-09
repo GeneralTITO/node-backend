@@ -22,8 +22,10 @@ model User {
   gender        String
   role          Role
   phone         String?
-  email         String?      @unique 
+  email         String      @unique 
   address       String?
+  password      String
+  resetToken    String?
   appointmentsPatient Appointments[] @relation("PatientAppointments")
   appointmentsEmployee Appointments[] @relation("EmployeeAppointments")
   attendancesPatient Attendances[] @relation("PatientAttendances")

@@ -5,8 +5,14 @@ import { AppError } from "../errors";
 
 const create = async (
   payload: PrescriptionCreate,
-  idAppointment: string
+  idAppointment: string,
+  role: string
 ): Promise<Prescriptions> => {
+
+  if (role !== "Doctor") {
+    throw new AppError("Insufficient permissions", 403);
+  }
+  
   const appointmentId = Number(idAppointment);
 
   const appointmentExists = await prisma.appointments.findUnique({

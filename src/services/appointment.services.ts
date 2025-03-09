@@ -6,9 +6,15 @@ import { AppError } from "../errors";
 const create = async (
     payload: AppointmentCreate,
     idStaff: string,
-    idUser: string
+    idUser: string,
+    role: string
   ): Promise<Appointments> => {
 
+    if (role !== "Doctor") {
+      throw new AppError("Insufficient permissions", 403);
+    }
+
+    
     if (!idStaff || !idUser) {
       throw new AppError(
         "Both patient and employee must be provided with valid IDs",

@@ -1,45 +1,8 @@
-/*
-  Warnings:
-
-  - You are about to drop the `Appointment` table. If the table is not empty, all the data it contains will be lost.
-  - You are about to drop the `Attendance` table. If the table is not empty, all the data it contains will be lost.
-  - You are about to drop the `Employee` table. If the table is not empty, all the data it contains will be lost.
-  - You are about to drop the `Patient` table. If the table is not empty, all the data it contains will be lost.
-  - You are about to drop the `Prescription` table. If the table is not empty, all the data it contains will be lost.
-
-*/
 -- CreateEnum
 CREATE TYPE "Role" AS ENUM ('Doctor', 'Staff', 'Patient');
 
--- DropForeignKey
-ALTER TABLE "Appointment" DROP CONSTRAINT "Appointment_employeeId_fkey";
-
--- DropForeignKey
-ALTER TABLE "Appointment" DROP CONSTRAINT "Appointment_patientId_fkey";
-
--- DropForeignKey
-ALTER TABLE "Attendance" DROP CONSTRAINT "Attendance_employeeId_fkey";
-
--- DropForeignKey
-ALTER TABLE "Attendance" DROP CONSTRAINT "Attendance_patientId_fkey";
-
--- DropForeignKey
-ALTER TABLE "Prescription" DROP CONSTRAINT "Prescription_appointmentId_fkey";
-
--- DropTable
-DROP TABLE "Appointment";
-
--- DropTable
-DROP TABLE "Attendance";
-
--- DropTable
-DROP TABLE "Employee";
-
--- DropTable
-DROP TABLE "Patient";
-
--- DropTable
-DROP TABLE "Prescription";
+-- CreateEnum
+CREATE TYPE "UrgencyLevel" AS ENUM ('Low', 'Medium', 'High', 'Emergency');
 
 -- CreateTable
 CREATE TABLE "user" (
@@ -52,6 +15,8 @@ CREATE TABLE "user" (
     "phone" TEXT,
     "email" TEXT,
     "address" TEXT,
+    "password" TEXT NOT NULL,
+    "resetToken" TEXT,
 
     CONSTRAINT "user_pkey" PRIMARY KEY ("id")
 );
@@ -89,6 +54,9 @@ CREATE TABLE "attendances" (
 
     CONSTRAINT "attendances_pkey" PRIMARY KEY ("id")
 );
+
+-- CreateIndex
+CREATE UNIQUE INDEX "user_email_key" ON "user"("email");
 
 -- AddForeignKey
 ALTER TABLE "appointments" ADD CONSTRAINT "appointments_patient_id_fkey" FOREIGN KEY ("patient_id") REFERENCES "user"("id") ON DELETE RESTRICT ON UPDATE CASCADE;

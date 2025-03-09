@@ -1,17 +1,53 @@
-1- add auth
-2- add search for user names
-3- add search for Prescriptions and Appointments for user id
+
+
+
+
+1- add auth (staff and doctor)                               (y)
+
+1.2- update(staff, doctor >> Appointments and attendance. patient >>> staff, doctor)
+
+1.3- only staff can make attendance, only doctor can make appointment              (y)
+
+2- add search for user names (staff and doctor)
+
+3- add search for Prescriptions, Attendance and Appointments for user id (staff and doctor)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 4- add regis
 5- prometheus
 6- kafta/mqhabbit
-7- kubbernets/docker
+
+7- mongodb (non-relational database)
+8- kubbernets/docker
+
+
+
+
+
+
+
 
 
 
 8- nest.js
-9- react + redux
+9- react + redux + tailwind
 10- next.js
 11- .net
 12- java

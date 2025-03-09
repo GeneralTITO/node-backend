@@ -4,10 +4,12 @@ import appointmentServices from "../services/appointment.services";
 const create = async (req: Request, res: Response): Promise<void> => {
   const idUser: string = req.params.idUser;
   const idStaff: string = req.params.idStaff;
+  const role: string = res.locals.decoded.role;
   const appointment = await appointmentServices.create(
     req.body,
     idStaff,
-    idUser
+    idUser,
+    role
   );
   res.status(201).json(appointment);
 };
