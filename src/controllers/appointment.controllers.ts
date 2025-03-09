@@ -19,6 +19,11 @@ const read = async (req: Request, res: Response): Promise<void> => {
   res.status(200).json(appointments);
 };
 
+const getUserAppointments = async (req: Request, res: Response): Promise<void> => {
+  const idUser = Number(req.params.id)
+  const appointments = await appointmentServices.getUserAppointments(idUser);
+  res.status(200).json(appointments);
+};
 const readOne = async (req: Request, res: Response): Promise<void> => {
   const appointmentId: string = req.params.id;
   const appointment = await appointmentServices.readOne(Number(appointmentId));
@@ -30,4 +35,4 @@ const destroy = async (req: Request, res: Response): Promise<void> => {
   res.status(204).send();
 };
 
-export default { create, read, destroy, readOne };
+export default { create, read, destroy, readOne, getUserAppointments };

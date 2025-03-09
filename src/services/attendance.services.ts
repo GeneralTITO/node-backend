@@ -9,7 +9,6 @@ const create = async (
   idUser: string,
   role: string
 ): Promise<Attendances> => {
-
   if (role !== "Staff") {
     throw new AppError("Insufficient permissions", 403);
   }
@@ -55,17 +54,54 @@ const read = async (): Promise<Attendances[]> => {
   return await prisma.attendances.findMany();
 };
 
-const readOne = async (appointmentId: number): Promise<any> => {
-  const appointment = await prisma.attendances.findUnique({
-    where: { id: appointmentId },
+const readOne = async (attendanceId: number): Promise<any> => {
+  const attendance = await prisma.attendances.findUnique({
+    where: { id: attendanceId },
   });
-  return appointment;
+  return attendance;
+};
+const getUserAttendances = async (userId: number): Promise<Attendances[]> => {
+  const user = await prisma.user.findUnique({
+    where: { id: userId },
+  });
+
+  if (!user) {
+    throw new AppError("User not found", 404);
+  }
+
+  const attendances = await prisma.attendances.findMany({
+    where: {
+      OR: [{ patientsId: userId }, { employeeId: userId }],
+    },
+    // include: {
+    //   patient: {
+    //     select: {
+    //       id: true,
+    //       firstName: true,
+    //       lastName: true,
+    //       email: true,
+    //       role: true,
+    //     },
+    //   },
+    //   employee: {
+    //     select: {
+    //       id: true,
+    //       firstName: true,
+    //       lastName: true,
+    //       email: true,
+    //       role: true,
+    //     },
+    //   },
+    // },
+  });
+
+  return attendances;
 };
 
-const destroy = async (appointmentId: number): Promise<void> => {
+const destroy = async (attendanceId: number): Promise<void> => {
   await prisma.attendances.delete({
-    where: { id: appointmentId },
+    where: { id: attendanceId },
   });
 };
 
-export default { create, read, destroy, readOne };
+export default { create, read, destroy, readOne, getUserAttendances };

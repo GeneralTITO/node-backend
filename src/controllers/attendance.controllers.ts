@@ -25,10 +25,15 @@ const readOne = async (req: Request, res: Response): Promise<void> => {
   const attendance = await attendanceServices.readOne(Number(attendanceId));
   res.status(200).json(attendance);
 };
+const getUserAttendances = async (req: Request, res: Response): Promise<void> => {
+  const userId: number = Number(req.params.id) ;
+  const attendances = await attendanceServices.getUserAttendances(userId);
+  res.status(200).json(attendances);
+};
 
 const destroy = async (req: Request, res: Response): Promise<void> => {
   await attendanceServices.destroy(res.locals.foundEntity.id);
   res.status(204).send();
 };
 
-export default { create, read, destroy, readOne };
+export default { create, read, destroy, readOne ,getUserAttendances};

@@ -14,7 +14,7 @@ const create = async (
       throw new AppError("Insufficient permissions", 403);
     }
 
-    
+
     if (!idStaff || !idUser) {
       throw new AppError(
         "Both patient and employee must be provided with valid IDs",
@@ -67,10 +67,37 @@ const readOne = async (appointmentId: number): Promise<any> => {
   return appointment;
 };
 
+const getUserAppointments = async (userId: number): Promise<Appointments[]> => {
+  const user = await prisma.user.findUnique({
+    where: { id: userId },
+  });
+
+  if (!user) {
+    throw new AppError("User not found", 404);
+  }
+
+  const appointments = await prisma.appointments.findMany({
+    where: {
+      OR: [
+        { patientId: userId },
+        { employeeId: userId }
+      ]
+    },
+    include: {
+      prescriptions: true
+    },
+    orderBy: {
+      appointmentDate: 'desc'
+    }
+  });
+
+  return appointments;
+};
+
 const destroy = async (appointmentId: number): Promise<void> => {
   await prisma.appointments.delete({
     where: { id: appointmentId },
   });
 };
 
-export default { create, read, destroy, readOne };
+export default { create, read, destroy, readOne, getUserAppointments };
