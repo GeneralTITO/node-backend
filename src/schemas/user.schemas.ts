@@ -80,6 +80,7 @@ const UserCreateSchema = UserSchema.omit({
 });
 
 const UserUpdateSchema = UserCreateSchema.partial();
+const SearchByNameSchema = z.object({ name: z.string().min(1) });
 
 export {
   UserSchema,
@@ -87,4 +88,5 @@ export {
   UserUpdateSchema,
   UserReturnSchema,
   ArrayUserReturnSchema,
+  SearchByNameSchema,
 };

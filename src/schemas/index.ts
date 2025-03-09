@@ -20,6 +20,7 @@ import {
   UserUpdateSchema,
   ArrayUserReturnSchema,
   UserReturnSchema,
+  SearchByNameSchema,
 } from "./user.schemas";
 
 import { UrgencyLevelSchema } from "./urgencyLevel.schemas";
@@ -43,4 +44,5 @@ export {
   sessionSchema,
   ArrayUserReturnSchema,
   UserReturnSchema,
+  SearchByNameSchema,
 };

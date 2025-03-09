@@ -30,5 +30,12 @@ const destroy = async (req: Request, res: Response): Promise<void> => {
   await userServices.destroy(res.locals.foundEntity.id);
   res.status(204).send();
 };
+const searchByName = async (req: Request, res: Response): Promise<void> => {
+  const name: string = req.body.name
+  const users = await userServices.searchByName(name);
+  res.status(200).json(users);
+};
 
-export default { create, read, destroy, update, readOne };
+
+
+export default { create, read, destroy, update, readOne ,searchByName};

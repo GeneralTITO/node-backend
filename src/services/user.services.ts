@@ -43,17 +43,15 @@ const update = async (
   if (typeof payload.dateOfBirth === "string") {
     formattedPayload.dateOfBirth = new Date(payload.dateOfBirth);
   }
-  const passwordString: any = formattedPayload.password
+  const passwordString: any = formattedPayload.password;
 
   if (formattedPayload.password) {
     formattedPayload.password = hashSync(passwordString, 10);
   }
   const userUpdated = await prisma.user.update({
-    where: { id: idUser }, 
+    where: { id: idUser },
     data: { ...formattedPayload },
   });
-
-  
 
   return userUpdated;
 };
@@ -64,4 +62,28 @@ const destroy = async (userId: number): Promise<void> => {
   });
 };
 
-export default { create, read, destroy, readOne , update};
+const searchByName = async (name: string): Promise<UserReturn[]> => {
+
+  const users = await prisma.user.findMany({
+    where: {
+      OR: [
+        {
+          firstName: {
+            contains: name,
+            mode: "insensitive",
+          },
+        },
+        {
+          lastName: {
+            contains: name,
+            mode: "insensitive",
+          },
+        },
+      ],
+    },
+  });
+
+  return ArrayUserReturnSchema.parse(users);
+};
+
+export default { create, read, destroy, readOne, update, searchByName };

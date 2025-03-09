@@ -9,12 +9,10 @@ const create = async (
   idUser: string,
   role: string
 ): Promise<Attendances> => {
-  
+
   if (role !== "Staff") {
     throw new AppError("Insufficient permissions", 403);
   }
-
-
 
   if (!idStaff || !idUser) {
     throw new AppError(
