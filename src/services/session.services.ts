@@ -21,8 +21,6 @@ const create = async ({
     throw new AppError("Invalid credentials email", 401);
   }
 
-  console.log(password)
-  console.log(foundUser.password)
   const samePwd: boolean = await compare(password, foundUser.password);
 
   if (!samePwd) {

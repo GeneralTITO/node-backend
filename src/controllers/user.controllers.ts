@@ -19,7 +19,7 @@ const readOne = async (req: Request, res: Response): Promise<void> => {
   res.status(200).json(user);
 };
 const update = async (req: Request, res: Response): Promise<void> => {
-  const id: number = Number(res.locals.decoded.sub);
+  const id: number = Number(req.params.id);
   const user = await userServices.update(req.body, id);
 
   const response = UserReturnSchema.parse(user)

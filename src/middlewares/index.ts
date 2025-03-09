@@ -3,12 +3,12 @@ import { attendanceIdExists } from "./attendanceIdExists";
 import { handleError } from "./handleError.middleware";
 import { idExists } from "./idExists.middleware";
 import { isOwner } from "./isOwner.middleware";
+import { isPatient } from "./isPatient.middleware";
 import { isStaffOrDoctor } from "./isStaffOrDoctormiddleware";
 import { presciptionIdExists } from "./presciptionIdExists";
 import { uniqueEmail } from "./uniqueEmail.middleware";
 import { validateBody } from "./validateBody.middleware";
 import { verifyToken } from "./verifyToken.middleware";
-
 export default {
   handleError,
   idExists,
@@ -19,5 +19,6 @@ export default {
   attendanceIdExists,
   verifyToken,
   presciptionIdExists,
+  isPatient,
   isOwner,
 };
